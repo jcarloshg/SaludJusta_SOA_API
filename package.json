@@ -1,0 +1,18 @@
+{
+  "name": "saludjusta_soa_api",
+  "version": "1.0.0",
+  "description": "This is the back-end from software product Salud-Justa",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jose Carlos Huerta Garcia",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
