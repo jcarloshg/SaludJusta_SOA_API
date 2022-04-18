@@ -1,15 +1,17 @@
 const express = require('express');
 const app = express();
 
-
-const cliente = require('./Cliente');
-
 app.get('/', (request, response) => {
+    const mesajeBienvenido = {
+        mensaje:
+            "Esta API funciona como back-end del proyecto SaludJusta"
+    }
 
-    const cliete = cliente({ name: "JoseCarlos", numberPhone: 2212272775 });
-
-    response.status(200).json(cliete);
+    response.status(200).json(mesajeBienvenido);
 });
+
+
+
 
 const PORT = process.env.PORT || 8080;
 const HOST = 'http://localhost';

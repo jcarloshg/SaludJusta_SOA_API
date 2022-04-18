@@ -1,5 +1,5 @@
 
-
+// this is a entitie abstract
 class User {
 
     constructor({
@@ -19,6 +19,8 @@ class User {
         this.email = email;
         this.password = password;
     }
+
+    getRol = () => this.rol;
 
 }
 

@@ -1,28 +1,52 @@
 
+const User = require("./User");
 
-const Cliente = {
-    name: null,
-    lastName: null,
-    numberPhone: null,
-    email: null,
-};
+class Cliente extends User {
 
-/**
- *
- * @param {Cliente} cliente
- * @returns {Cliente} Cliente
- */
-const cliente = (cliente) => {
-
-    let newCliente = { ...Cliente };
-
-    for (const key in cliente) {
-        if (Object.hasOwnProperty.call(cliente, key)) {
-            newCliente[key] = cliente[key];
-        }
+    constructor({
+        name,
+        lastName,
+        gender,
+        rol = "Cliente",
+        phoneNumber,
+        email,
+        password, }) {
+        super({
+            name,
+            lastName,
+            gender,
+            rol,
+            phoneNumber,
+            email,
+            password,
+        })
     }
 
-    return newCliente;
 }
 
-module.exports = cliente;
+module.exports = Cliente;
+
+// const Cliente = {
+//     name: null,
+//     lastName: null,
+//     numberPhone: null,
+//     email: null,
+// };
+
+// /**
+//  *
+//  * @param {Cliente} cliente
+//  * @returns {Cliente} Cliente
+//  */
+// const cliente = (cliente) => {
+
+//     let newCliente = { ...Cliente };
+
+//     for (const key in cliente) {
+//         if (Object.hasOwnProperty.call(cliente, key)) {
+//             newCliente[key] = cliente[key];
+//         }
+//     }
+
+//     return newCliente;
+// }
