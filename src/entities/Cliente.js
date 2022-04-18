@@ -26,18 +26,7 @@ class Cliente extends User {
 
 module.exports = Cliente;
 
-// const Cliente = {
-//     name: null,
-//     lastName: null,
-//     numberPhone: null,
-//     email: null,
-// };
 
-// /**
-//  *
-//  * @param {Cliente} cliente
-//  * @returns {Cliente} Cliente
-//  */
 // const cliente = (cliente) => {
 
 //     let newCliente = { ...Cliente };

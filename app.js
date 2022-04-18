@@ -1,4 +1,6 @@
 const express = require('express');
+const indexRoutes = require('./src/APIs/indexRoutes');
+
 const app = express();
 
 app.get('/', (request, response) => {
@@ -7,11 +9,10 @@ app.get('/', (request, response) => {
             "Esta API funciona como back-end del proyecto SaludJusta"
     }
 
-    response.status(200).json(mesajeBienvenido);
+    response.status(200).send(textWelcome);
 });
 
-
-
+indexRoutes(app, express);
 
 const PORT = process.env.PORT || 8080;
 const HOST = 'http://localhost';
