@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const connection = require("../Frameworks/database/mysql/connection");
+const messageSuccess = require("./messagesResponse/messageSuccess");
 
 const utilsRouter = Router();
 
@@ -15,30 +16,28 @@ utilsRouter.get('/', (request, response) => {
 utilsRouter.get('/check_coneciont_mysql', (request, response) => {
 
     connection.query(
-        'SELECT * from CatalogoExamen;',
+        'use SaludJustaDB;',
         (error, results, fields) => {
-            if (error) throw error;
 
-            console.log('The solution is: ', results[0].solution);
+            if (error != null) {
+                console.log(`[error] -> `, error);
+                response.status(200).json(error);
+                return;
+            }
+
+            response
+                .status(200)
+                .json(
+                    messageSuccess({
+                        code: 200,
+                        data: results,
+                        isOk: true,
+                        message: "check coneciont mysql is OK"
+                    })
+                );
+
         }
     );
-
-    response.status(200).json({ requestExamTypes: "ok" });
-
-    // connection.connect((err) => {
-    //     if (err) {
-    //         console.error('Database connection failed: ' + err.stack);
-    //         response
-    //             .status(200)
-    //             .json(err);
-    //         return;
-    //     }
-
-    //     console.log('Connected to database.');
-    //     response
-    //         .status(200)
-    //         .json({ message: "Conecction sucess" });
-    // });
 
     // connection.end();
 });

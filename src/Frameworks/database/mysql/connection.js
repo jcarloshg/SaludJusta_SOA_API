@@ -24,10 +24,7 @@ connection.query(
             console.log(`[error] -> `, error);
             throw error;
         }
-
-        // if (results)
-        //     console.log('this conexion use database [SaludJustaDB]');
-
+        // console.log('this conexion use database [SaludJustaDB]');
     }
 );
 
