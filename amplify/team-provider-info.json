@@ -1,0 +1,15 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-saludjusta-staging-174155-authRole",
+      "UnauthRoleArn": "arn:aws:iam::111421882477:role/amplify-saludjusta-staging-174155-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::111421882477:role/amplify-saludjusta-staging-174155-authRole",
+      "Region": "us-west-1",
+      "DeploymentBucketName": "amplify-saludjusta-staging-174155-deployment",
+      "UnauthRoleName": "amplify-saludjusta-staging-174155-unauthRole",
+      "StackName": "amplify-saludjusta-staging-174155",
+      "StackId": "arn:aws:cloudformation:us-west-1:111421882477:stack/amplify-saludjusta-staging-174155/01563120-c008-11ec-be55-02e6a46ffb9b",
+      "AmplifyAppId": "duxxc0jhnbiio"
+    }
+  }
+}
