@@ -1,7 +1,7 @@
 
 const { response, request } = require("express");
 const Exam = require("../../../../entities/Exam");
-const connection = require("../../../../Frameworks/database/mysql/connection");
+const gestionarCitas = require("../../UseCases/GestionarCitas/requestExamTypes");
 
 const examenController = {};
 
@@ -12,16 +12,16 @@ const examenController = {};
  */
 examenController.requestExamTypes = async (request, response) => {
 
-    connection.query(
-        'SELECT * from CatalogoExamen;',
-        (error, results, fields) => {
-            if (error) throw error;
+    const responseRequestExamTypes = await gestionarCitas.requestExamTypes(response);
 
-            console.log('The solution is: ', results[0].solution);
-        }
-    );
+    console.log(`[responseRequestExamTypes] -> `, responseRequestExamTypes);
 
-    response.status(200).json({ requestExamTypes: "ok" });
+    response
+        .status(200)
+        .json({
+            requestExamTypes: "ok",
+            data: responseRequestExamTypes
+        });
 }
 
 
