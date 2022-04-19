@@ -6,6 +6,7 @@ const indexRoutes = (app) => {
     });
 
     // app.use('/apiCita')
+
 }
 
 module.exports = indexRoutes;
