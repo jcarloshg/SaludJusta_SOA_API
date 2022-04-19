@@ -7,7 +7,6 @@ const indexRoutes = (app) => {
     app.use('/utils', utilsRouter);
 
     app.use('/api_exam', examRouter);
-
 }
 
 module.exports = indexRoutes;

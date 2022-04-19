@@ -7,6 +7,29 @@ const connection = mysql.createConnection({
     port: "3306"
 });
 
+connection.connect((err) => {
+    if (err) {
+        console.error('Database connection failed: ' + err.stack);
+        return;
+    }
+
+    console.log('Connected to database [SaludJusta]');
+});
+
+connection.query(
+    'use SaludJustaDB;',
+    (error, results, fields) => {
+
+        if (error != null) {
+            console.log(`[error] -> `, error);
+            throw error;
+        }
+
+        // if (results)
+        //     console.log('this conexion use database [SaludJustaDB]');
+
+    }
+);
 
 
 module.exports = connection;

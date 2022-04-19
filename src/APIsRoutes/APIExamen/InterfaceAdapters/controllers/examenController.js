@@ -1,6 +1,7 @@
 
 const { response, request } = require("express");
 const Exam = require("../../../../entities/Exam");
+const connection = require("../../../../Frameworks/database/mysql/connection");
 
 const examenController = {};
 
@@ -10,6 +11,16 @@ const examenController = {};
  * @param {response} response
  */
 examenController.requestExamTypes = async (request, response) => {
+
+    connection.query(
+        'SELECT * from CatalogoExamen;',
+        (error, results, fields) => {
+            if (error) throw error;
+
+            console.log('The solution is: ', results[0].solution);
+        }
+    );
+
     response.status(200).json({ requestExamTypes: "ok" });
 }
 
