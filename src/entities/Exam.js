@@ -1,5 +1,5 @@
 
-class Examen {
+class Exam {
     constructor({
         fechaHora = null,
         status = null,
@@ -15,4 +15,4 @@ class Examen {
     }
 }
 
-module.exports = Examen;
+module.exports = Exam;

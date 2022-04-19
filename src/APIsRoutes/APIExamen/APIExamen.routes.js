@@ -3,6 +3,12 @@ const examenController = require("./InterfaceAdapters/controllers/examenControll
 
 const examRouter = Router();
 
+
+// * POST endpoints
+
+examRouter.post('/create_exam', examenController.create_exam);
+
+
 // * GET endpoints
 
 examRouter.get('/', (request, response) => response.status(200).json({ message: "API EXAM from SaludJusta project" }));
@@ -10,13 +16,7 @@ examRouter.get('/', (request, response) => response.status(200).json({ message: 
 examRouter.get('/request_exam_types', examenController.requestExamTypes);
 
 
-
-// * POST endpoints
-
-
-
 // * PUT endpoints
-
 
 
 // * DELETE endpoints
