@@ -1,3 +1,5 @@
+const examRouter = require("./APIExamen/APIExamen.routes");
+
 
 const indexRoutes = (app) => {
 
@@ -5,7 +7,7 @@ const indexRoutes = (app) => {
         response.status(200).json({ mensaje: "Esta API funciona como back-end del proyecto SaludJusta" });
     });
 
-    // app.use('/apiCita')
+    app.use('/api_exam', examRouter);
 
 }
 

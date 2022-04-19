@@ -1,20 +1,24 @@
 const { Router } = require("express");
+const examenController = require("./InterfaceAdapters/controllers/examenController");
 
-const router = Router();
+const examRouter = Router();
 
-// * GET endpoints ============================================
+// * GET endpoints
 
-// router.route('/requestExamTypes').;
-router.get('/request-exam-types')
+examRouter.get('/', (request, response) => response.status(200).json({ message: "API EXAM from SaludJusta project" }));
 
-
-
-// * POST endpoints ============================================
+examRouter.get('/request_exam_types', examenController.requestExamTypes);
 
 
 
-// * PUT endpoints =============================================
+// * POST endpoints
 
 
 
-// * DELETE endpoints ========================================
+// * PUT endpoints
+
+
+
+// * DELETE endpoints
+
+module.exports = examRouter;
