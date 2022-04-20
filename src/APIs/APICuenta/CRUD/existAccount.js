@@ -1,5 +1,5 @@
-const User = require("../../../entities/User");
 
+const User = require("../../../entities/User");
 
 /**
  *
@@ -20,7 +20,7 @@ const existAccount = async (connection, data) => {
 
     try {
         const user = await userQuery;
-        return user[0] === undefined ? null : new User(user);
+        return user[0] === undefined ? null : new User(user[0]);
     } catch (error) {
         console.log(error);
         return error;

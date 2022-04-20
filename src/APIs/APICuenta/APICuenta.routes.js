@@ -7,7 +7,7 @@ const controller = require('./controller/controller')
 
 // * POST endpoints
 
-// apiAccountRuter.get('/existAccount', controller.loggin);
+apiAccountRuter.post('/createAccount', controller.createAccount);
 
 
 // * GET endpoints
