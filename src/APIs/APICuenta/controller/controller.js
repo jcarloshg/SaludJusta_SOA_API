@@ -29,7 +29,10 @@ controller.loggin = async (request, response) => {
  * @param {response} response
  */
 controller.existAccount = async (request, response) => {
-    const resExistAccount = await CRUD.existAccount(connection, { data: "data" });
+
+    const data = request.body;
+
+    const resExistAccount = await CRUD.existAccount(connection, data);
 
     response
         .status(200)
