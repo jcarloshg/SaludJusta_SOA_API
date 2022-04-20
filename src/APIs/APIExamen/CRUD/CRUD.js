@@ -1,3 +1,4 @@
+
 const requestExamTypes = require("./requestExamTypes");
 
 const CRUD = {

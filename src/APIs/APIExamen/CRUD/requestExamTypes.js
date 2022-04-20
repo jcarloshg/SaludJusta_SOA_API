@@ -1,9 +1,6 @@
+const ExamCatalogItem = require("../../../entities/ExamCatalogItem");
 
-/**
- *
- * @param {} connection
- * @returns
- */
+
 const requestExamTypes = async (connection) => {
 
     const typesExams = new Promise((resolve, reject) => connection.query(
@@ -16,7 +13,13 @@ const requestExamTypes = async (connection) => {
     ));
 
     try {
-        return await typesExams;
+
+        const typesExamsResolve = await typesExams;
+
+        const typeExams = typesExamsResolve.map(exam => new ExamCatalogItem(exam));
+
+        return await typeExams;
+
     } catch (error) {
         return error;
     }
