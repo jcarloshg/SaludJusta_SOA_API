@@ -1,23 +1,24 @@
 
-// this is a entitie abstract
 class User {
 
     constructor({
+        id = null,
         name = null,
         lastName = null,
-        gender = null,
-        rol = null,
         phoneNumber = null,
-        email = null,
-        password = null
+        gender = null,
+        emial = null,
+        password = null,
+        role = null,
     }) {
+        this.id = id;
         this.name = name;
         this.lastName = lastName;
-        this.gender = gender;
-        this.rol = rol;
         this.phoneNumber = phoneNumber;
-        this.email = email;
+        this.gender = gender;
+        this.emial = emial;
         this.password = password;
+        this.role = role;
     }
 
     getRol = () => this.rol;
