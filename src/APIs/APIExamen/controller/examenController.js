@@ -1,7 +1,8 @@
 
 const { response, request } = require("express");
-const Exam = require("../../../../entities/Exam");
-const gestionarCitas = require("../../UseCases/GestionarCitas/requestExamTypes");
+const Exam = require("../../../entities/Exam"); // TODO - delete this line
+const connection = require("../../../Frameworks/database/mysql/connection");
+const CRUD = require("../CRUD/CRUD");
 
 const examenController = {};
 
@@ -12,9 +13,7 @@ const examenController = {};
  */
 examenController.requestExamTypes = async (request, response) => {
 
-    const responseRequestExamTypes = await gestionarCitas.requestExamTypes(response);
-
-    console.log(`[responseRequestExamTypes] -> `, responseRequestExamTypes);
+    const responseRequestExamTypes = await CRUD.requestExamTypes(connection);
 
     response
         .status(200)
@@ -26,6 +25,8 @@ examenController.requestExamTypes = async (request, response) => {
 
 
 examenController.create_exam = async (request, response) => {
+
+    // TODO - delete these
 
     console.log(`[request.body] -> `, request.body);
 

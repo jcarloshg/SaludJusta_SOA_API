@@ -1,7 +1,5 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-
-const indexRoutes = require('./src/APIsRoutes/indexRoutes');
+const index_routes = require('./src/APIs/index_routes');
 
 const app = express();
 
@@ -10,7 +8,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 
 
-indexRoutes(app);
+index_routes(app);
 
 const PORT = process.env.PORT || 8080;
 const HOST = 'http://localhost';

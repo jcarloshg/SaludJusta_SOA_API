@@ -13,7 +13,7 @@ connection.connect((err) => {
         return;
     }
 
-    console.log('Connected to database [SaludJusta]');
+    console.log(' -> Connected to database [SaludJusta]');
 });
 
 connection.query(
@@ -24,7 +24,7 @@ connection.query(
             console.log(`[error] -> `, error);
             throw error;
         }
-        // console.log('this conexion use database [SaludJustaDB]');
+        console.log(' -> this conexion use database [SaludJustaDB]');
     }
 );
 
