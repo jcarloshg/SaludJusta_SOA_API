@@ -1,15 +1,17 @@
 
 class Appointment {
     constructor({
-        id = 29,
-        dateTime = "2022-04-21T15=00=00.000Z",
+        id = null,
+        date = null,
+        time = null,
         status = 'NO ASIGNADA',
         FK_Exam = null,
-        FK_ExamCatalog = 5,
+        FK_ExamCatalog = null,
         FK_UserClient = null
     }) {
         this.id = id;
-        this.dateTime = dateTime;
+        this.date = date;
+        this.time = time;
         this.status = status;
         this.FK_Exam = FK_Exam;
         this.FK_ExamCatalog = FK_ExamCatalog;

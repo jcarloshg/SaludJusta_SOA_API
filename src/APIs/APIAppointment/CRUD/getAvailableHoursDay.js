@@ -14,6 +14,9 @@ const getAvailableHoursDay = async (connection, data) => {
 
     try {
         const appointments = await hoursQuery;
+
+        console.log(`[appointments[0]] -> `, appointments[0]);
+
         return appointments[0] === undefined
             ? null
             : appointments.map(appointment => new Appointment(appointment))
