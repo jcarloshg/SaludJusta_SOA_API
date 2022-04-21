@@ -35,6 +35,23 @@ class User {
         return false;
     }
 
+
+    /**
+     * check if any property is null, NOTE this method not check [id]
+     * @returns
+     */
+    isPropertiesVoid() {
+        if (this.name == "") return true;
+        if (this.lastName == "") return true;
+        if (this.phoneNumber == "") return true;
+        if (this.gender == "") return true;
+        if (this.email == "") return true;
+        if (this.password == "") return true;
+        if (this.role == "") return true;
+
+        return false;
+    }
+
 }
 
 module.exports = User;

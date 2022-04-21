@@ -60,10 +60,12 @@ controller.createAccount = async (request, response) => {
     responseMsg(
         response,
         {
-            code: resExistAccount === null ? 404 : 202,
+            code: resExistAccount === null ? 400 : 201,
             data: resExistAccount,
             isOk: resExistAccount === null ? false : true,
-            message: resExistAccount === null ? msgToResponse[404] : msgToResponse[202]
+            message: resExistAccount === null
+                ? msgToResponse[400]
+                : msgToResponse[201]
         }
     )
 }

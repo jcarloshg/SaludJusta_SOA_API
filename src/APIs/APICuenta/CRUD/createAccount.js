@@ -12,10 +12,11 @@ const createAccount = async (connection, data) => {
     const userData = new User(data);
 
     if (userData.isPropertiesNull() == true) return null;
+    if (userData.isPropertiesVoid() == true) return null;
 
-    const query = `INSERT INTO User( name, lastName, phoneNumber, gender, email, password, role) values ('${userData.name}','${userData.lastName}','${userData.phoneNumber}','${userData.gender}','${userData.email}','${userData.password}','${userData.role}');`;
-
-    console.log(`[query] -> `, query);
+    const query =
+        "INSERT INTO User( name, lastName, phoneNumber, gender, email, password, role) values " +
+        `('${userData.name}','${userData.lastName}','${userData.phoneNumber}','${userData.gender}','${userData.email}','${userData.password}','${userData.role}');`;
 
     const userQuery = new Promise((resolve, reject) =>
         connection.query(
@@ -26,19 +27,12 @@ const createAccount = async (connection, data) => {
 
     try {
         const user = await userQuery;
-        console.log(user);
-        return await "createAccount is Ok";
-        // return user[0] === undefined ? null : new User(user[0]);
+        const idNewClient = user.insertId;
+        return user ? new User({ id: idNewClient, ...data }) : null;
     } catch (error) {
         console.log(error);
         return error;
     }
-
-    console.log(`[query] -> `, query);
-
-    return await "createAccount is Ok";
-
-    console.log(`[createAccount]`);
 
 }
 
