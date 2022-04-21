@@ -57,4 +57,28 @@ controller.updateAppointment = async (request, response) => {
 }
 
 
+/**
+ *
+ * @param {request} request
+ * @param {response} response
+ */
+controller.requestAppointmentsDay = async (request, response) => {
+
+    const resRequestAppointmentsDay = isValidData(request.body)
+        ? await CRUD.requestAppointmentsDay(connection, request.body)
+        : null;
+
+    responseMsg(
+        response,
+        {
+            code: resRequestAppointmentsDay === null ? 404 : 201,
+            data: resRequestAppointmentsDay,
+            isOk: resRequestAppointmentsDay === null ? false : true,
+            message: resRequestAppointmentsDay === null ? msgToResponse[404] : msgToResponse[201]
+        }
+    );
+
+}
+
+
 module.exports = controller;

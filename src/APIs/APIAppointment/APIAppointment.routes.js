@@ -12,6 +12,7 @@ apiAppointmentRoutes.get('/', (request, response) => response.status(200).json({
 
 apiAppointmentRoutes.get('/getAvailableHoursDay', controller.getAvailableHoursDay);
 
+apiAppointmentRoutes.get('/requestAppointmentsDay', controller.requestAppointmentsDay);
 
 
 // PUT endpoints
