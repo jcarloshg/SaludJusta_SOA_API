@@ -4,7 +4,7 @@ const ExamCatalogItem = require("../../../entities/ExamCatalogItem");
 const requestExamTypes = async (connection) => {
 
     const typesExams = new Promise((resolve, reject) => connection.query(
-        'SELECT * from CatalogoExamen;',
+        'SELECT * from ExamCatalog;',
         (error, results, fields) => {
             error
                 ? reject(error)

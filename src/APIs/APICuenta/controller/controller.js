@@ -13,23 +13,6 @@ const controller = {};
  * @param {request} request
  * @param {response} response
  */
-controller.loggin = async (request, response) => {
-    const responseLoggin = await CRUD.loggin(connection);
-
-    response
-        .status(200)
-        .json({
-            loggin: "ok",
-            data: responseLoggin
-        });
-}
-
-
-/**
- *
- * @param {request} request
- * @param {response} response
- */
 controller.existAccount = async (request, response) => {
 
     const data = request.body;
