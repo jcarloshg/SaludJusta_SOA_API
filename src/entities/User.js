@@ -2,7 +2,7 @@
 class User {
 
     constructor({
-        id = null,
+        idUser = null,
         name = null,
         lastName = null,
         phoneNumber = null,
@@ -11,7 +11,7 @@ class User {
         password = null,
         role = null,
     }) {
-        this.id = id;
+        this.User = User;
         this.name = name;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;

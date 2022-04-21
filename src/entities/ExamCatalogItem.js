@@ -1,11 +1,11 @@
 
 class ExamCatalogItem {
     constructor({
-        id = null,
+        idExamCatalogItem = null,
         typeExam = null,
         cost = null,
     }) {
-        this.id = id;
+        this.idExamCatalogItem = idExamCatalogItem;
         this.typeExam = typeExam;
         this.cost = cost;
     }

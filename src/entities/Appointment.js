@@ -1,7 +1,7 @@
 
 class Appointment {
     constructor({
-        id = null,
+        idAppointment = null,
         date = null,
         time = null,
         status = 'NO ASIGNADA',
@@ -9,7 +9,7 @@ class Appointment {
         FK_ExamCatalog = null,
         FK_UserClient = null
     }) {
-        this.id = id;
+        this.idAppointment = idAppointment;
         this.date = date;
         this.time = time;
         this.status = status;
