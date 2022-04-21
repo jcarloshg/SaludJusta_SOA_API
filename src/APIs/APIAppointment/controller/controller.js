@@ -1,5 +1,6 @@
 const { response, request } = require("express");
 const connection = require("../../../Frameworks/database/mysql/connection");
+const { transporter, mailOptions } = require("../../../Frameworks/services/nodemailer/config");
 const isValidData = require("../../../utils/isValidData/isValidData");
 const msgToResponse = require("../../../utils/messagesResponse/msgToResponse");
 const responseMsg = require("../../../utils/messagesResponse/response");
