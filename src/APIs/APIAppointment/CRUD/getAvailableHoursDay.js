@@ -3,7 +3,15 @@ const Appointment = require("../../../entities/Appointment");
 
 const getAvailableHoursDay = async (connection, data) => {
 
-    const query = "SELECT * FROM Appointment INNER JOIN ExamCatalog ON ExamCatalog.idExamCatalog = Appointment.FK_ExamCatalog WHERE typeExam = 'ESPIROMETRÍA';";
+    const { typeExam, date } = data;
+
+    const query =
+        "SELECT * FROM Appointment INNER JOIN ExamCatalog " +
+        "ON ExamCatalog.idExamCatalog = Appointment.FK_ExamCatalog " +
+        "WHERE " +
+        `typeExam = '${typeExam}' ` +
+        `AND date = '${date}' ` +
+        `AND status = 'NO ASIGNADA';`;
 
     const hoursQuery = new Promise((resolve, reject) => connection.query(
         query,
@@ -16,6 +24,7 @@ const getAvailableHoursDay = async (connection, data) => {
 
     try {
         const appointments = await hoursQuery;
+        console.log(`[appointments[0]] -> `, appointments[0]);
         return appointments[0] === undefined
             ? null
             : appointments.map(appointment => new Appointment(appointment))
@@ -23,8 +32,6 @@ const getAvailableHoursDay = async (connection, data) => {
         console.log(error);
         return error;
     }
-
-    return await "getAvailableHoursDay";
 
 }
 

@@ -7,8 +7,12 @@ const apiAppointmentRoutes = Router();
 
 
 // GET endpoints
+
 apiAppointmentRoutes.get('/', (request, response) => response.status(200).json({ message: "API Appointment  from SaludJusta project" }));
+
 apiAppointmentRoutes.get('/getAvailableHoursDay', controller.getAvailableHoursDay);
+
+
 
 // PUT endpoints
 

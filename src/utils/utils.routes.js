@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const connection = require("../Frameworks/database/mysql/connection");
-const messageSuccess = require("./messagesResponse/messageSuccess");
+const responseMsg = require("./messagesResponse/response");
 
 const utilsRouter = Router();
 
@@ -25,16 +25,16 @@ utilsRouter.get('/check_coneciont_mysql', (request, response) => {
                 return;
             }
 
-            response
-                .status(200)
-                .json(
-                    messageSuccess({
-                        code: 200,
-                        data: results,
-                        isOk: true,
-                        message: "check coneciont mysql is OK"
-                    })
-                );
+
+            responseMsg(
+                response,
+                {
+                    code: 200,
+                    data: results,
+                    isOk: true,
+                    message: "check conection to mysql is OK"
+                }
+            );
 
         }
     );
