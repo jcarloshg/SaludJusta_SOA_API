@@ -6,9 +6,9 @@
 
 const Appointment = require("../../../entities/Appointment");
 
-
 const updateAppointment = async (connection, data) => {
 
+    // get data
     const { FK_UserClient, FK_Exam } = data;
     const _appointment = new Appointment(JSON.parse(data.appointment));
 
@@ -17,20 +17,20 @@ const updateAppointment = async (connection, data) => {
     const updateAppointmentQuery = new Promise((resolve, reject) => connection.query(
         query,
         (error, results, fields) => {
-            error
-                ? reject(error)
-                : resolve(results)
+            error ? reject(error) : resolve(results)
         }
     ));
 
-
     try {
         const appointment = await updateAppointmentQuery;
-        console.log(`[appointment] -> `, appointment);
-        console.log(appointment.code ?? "ASDASD");
-        return appointment.code === undefined
-            ? null
-            : appointments.map(appointment => new Appointment(appointment))
+
+        return appointment
+            ? new Appointment({
+                ..._appointment,
+                FK_UserClient: FK_UserClient,
+                FK_Exam: FK_Exam
+            })
+            : null;
 
     } catch (error) {
         console.log(error);
