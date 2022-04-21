@@ -6,7 +6,7 @@ const apiExamRouter = Router();
 
 // * POST endpoints
 
-apiExamRouter.post('/create_exam', examenController.create_exam);
+apiExamRouter.post('/createExam', examenController.createExam);
 
 
 // * GET endpoints

@@ -1,17 +1,18 @@
 
 class Exam {
+
+    // idExam int auto_increment primary key not null,
+    // results VARCHAR(45),
+    // FK_ExamCatalog int not null
+
     constructor({
-        fechaHora = null,
-        status = null,
-        resultados = null,
-        type = null,
-        cost = null,
+        idExam = null,
+        results = null,
+        FK_ExamCatalog = null,
     }) {
-        this.fechaHora = fechaHora;
-        this.status = status;
-        this.resultados = resultados;
-        this.type = type;
-        this.cost = cost;
+        this.idExam = idExam;
+        this.results = results;
+        this.FK_ExamCatalog = FK_ExamCatalog;
     }
 }
 

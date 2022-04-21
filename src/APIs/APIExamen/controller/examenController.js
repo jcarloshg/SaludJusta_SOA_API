@@ -1,7 +1,9 @@
 
 const { response, request } = require("express");
-const Exam = require("../../../entities/Exam"); // TODO - delete this line
 const connection = require("../../../Frameworks/database/mysql/connection");
+const isValidData = require("../../../utils/isValidData/isValidData");
+const msgToResponse = require("../../../utils/messagesResponse/msgToResponse");
+const responseMsg = require("../../../utils/messagesResponse/response");
 const CRUD = require("../CRUD/CRUD");
 
 const examenController = {};
@@ -13,41 +15,37 @@ const examenController = {};
  */
 examenController.requestExamTypes = async (request, response) => {
 
-    const responseRequestExamTypes = await CRUD.requestExamTypes(connection);
+    const resRequestExamTypes = await CRUD.requestExamTypes(connection);
 
-    response
-        .status(200)
-        .json({
-            requestExamTypes: "ok",
-            data: responseRequestExamTypes
-        });
+
+    responseMsg(
+        response,
+        {
+            code: resRequestExamTypes ? 200 : 400,
+            data: resRequestExamTypes,
+            isOk: resRequestExamTypes ? true : false,
+            message: resRequestExamTypes ? msgToResponse[201] : msgToResponse[400]
+        }
+    );
 }
 
 
-examenController.create_exam = async (request, response) => {
+examenController.createExam = async (request, response) => {
 
-    // TODO - delete these
+    const resCreateExam = isValidData(request.body)
+        ? await CRUD.createExam(connection, request.body)
+        : null;
 
-    console.log(`[request.body] -> `, request.body);
+    responseMsg(
+        response,
+        {
+            code: resCreateExam ? 201 : 400,
+            data: resCreateExam,
+            isOk: resCreateExam ? true : false,
+            message: resCreateExam ? msgToResponse[201] : msgToResponse[400]
+        }
+    )
 
-    // const {
-    //     fechaHora,
-    //     status,
-    //     resultados,
-    //     type,
-    //     cost,
-    // } = request.body;
-    // console.log(fechaHora);
-
-    const examen = new Exam({
-        cost: 0,
-        fechaHora: new Date(),
-        resultados: null,
-        status: "EN ESPERA",
-        type: "EXAMEN VISTA",
-    });
-
-    response.status(200).json(examen);
 }
 
 
