@@ -7,6 +7,7 @@ const CRUD = require("../CRUD/CRUD");
 
 const controller = {};
 
+
 /**
  *
  * @param {request} request
@@ -14,9 +15,7 @@ const controller = {};
  */
 controller.getAvailableHoursDay = async (request, response) => {
 
-    const _isValidData = isValidData(request.body);
-
-    const resGetAvailableHoursDay = _isValidData
+    const resGetAvailableHoursDay = isValidData(request.body)
         ? await CRUD.getAvailableHoursDay(connection, request.body)
         : null;
 
@@ -28,10 +27,33 @@ controller.getAvailableHoursDay = async (request, response) => {
             isOk: resGetAvailableHoursDay === null ? false : true,
             message: resGetAvailableHoursDay === null ? msgToResponse[404] : msgToResponse[202]
         }
-    )
+    );
 
 }
 
+
+/**
+ *
+ * @param {request} request
+ * @param {response} response
+ */
+controller.createAppointment = async (request, response) => {
+
+    const resCreateAppointment = isValidData(request.body)
+        ? await CRUD.createAppointment(connection, request.body)
+        : null;
+
+    responseMsg(
+        response,
+        {
+            code: resCreateAppointment === null ? 404 : 201,
+            data: resCreateAppointment,
+            isOk: resCreateAppointment === null ? false : true,
+            message: resCreateAppointment === null ? msgToResponse[404] : msgToResponse[201]
+        }
+    );
+
+}
 
 
 module.exports = controller;
