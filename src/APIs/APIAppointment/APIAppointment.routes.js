@@ -16,7 +16,7 @@ apiAppointmentRoutes.get('/getAvailableHoursDay', controller.getAvailableHoursDa
 
 // PUT endpoints
 
-apiAppointmentRoutes.put('/createAppointment', controller.createAppointment);
+apiAppointmentRoutes.put('/updateAppointment', controller.updateAppointment);
 
 // DELETE endpoints
 

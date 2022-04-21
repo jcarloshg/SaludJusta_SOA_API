@@ -37,10 +37,10 @@ controller.getAvailableHoursDay = async (request, response) => {
  * @param {request} request
  * @param {response} response
  */
-controller.createAppointment = async (request, response) => {
+controller.updateAppointment = async (request, response) => {
 
     const resCreateAppointment = isValidData(request.body)
-        ? await CRUD.createAppointment(connection, request.body)
+        ? await CRUD.updateAppointment(connection, request.body)
         : null;
 
     responseMsg(

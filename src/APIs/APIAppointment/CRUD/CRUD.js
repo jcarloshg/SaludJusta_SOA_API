@@ -1,10 +1,10 @@
 
 const getAvailableHoursDay = require('./getAvailableHoursDay');
-const createAppointment = require('./createAppointment');
+const updateAppointment = require('./updateAppointment');
 
 const CRUD = {
     getAvailableHoursDay,
-    createAppointment,
+    updateAppointment,
 };
 
 module.exports = CRUD;
