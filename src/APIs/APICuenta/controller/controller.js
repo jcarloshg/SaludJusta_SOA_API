@@ -71,5 +71,28 @@ controller.createAccount = async (request, response) => {
 }
 
 
+/**
+ *
+ * @param {request} request
+ * @param {response} response
+ */
+controller.loggin = async (request, response) => {
+
+    const resExistAccount = await CRUD.loggin(connection, request.body);
+
+    responseMsg(
+        response,
+        {
+            code: resExistAccount === null ? 404 : 202,
+            data: resExistAccount,
+            isOk: resExistAccount === null ? false : true,
+            message: resExistAccount === null
+                ? msgToResponse[404]
+                : msgToResponse[202]
+        }
+    )
+}
+
+
 
 module.exports = controller;

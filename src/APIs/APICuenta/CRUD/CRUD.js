@@ -1,12 +1,13 @@
 
-const loggin = require("./loggin");
+
 const existAccount = require('./existAccount');
 const createAccount = require('./createAccount');
+const loggin = require("./loggin");
 
 const CRUD = {
-    loggin,
     existAccount,
     createAccount,
+    loggin,
 };
 
 module.exports = CRUD;
