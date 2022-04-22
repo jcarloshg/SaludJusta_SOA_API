@@ -17,19 +17,17 @@ const updateAppointment = async (connection, data) => {
 
     const { FK_UserClient, FK_Exam, idAppointment } = data;
 
+    console.log(FK_UserClient, FK_Exam, idAppointment);
+
     try {
 
         const query = `UPDATE Appointment SET FK_Exam = ${FK_Exam}, FK_UserClient = ${FK_UserClient}, status = "EN ESPERA" WHERE idAppointment = ${idAppointment}`;
         const appointment = await conectionQuery(connection, query);
 
-        if (appointment.changedRows != 0) {
-            const resReadAppointment =
-                await readAppointment(connection, { idAppointment: idAppointment });
+        const resReadAppointment =
+            await readAppointment(connection, { idAppointment: idAppointment });
 
-            return resReadAppointment;
-        }
-
-        return null;
+        return resReadAppointment;
 
     } catch (error) {
         console.log(error);

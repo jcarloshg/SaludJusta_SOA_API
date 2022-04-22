@@ -17,14 +17,11 @@ const markAppointmentAsProgress = async (connection, data) => {
         const query = `UPDATE Appointment SET status = "EN CURSO" WHERE idAppointment = ${idAppointment}`;
         const appointment = await conectionQuery(connection, query);
 
-        if (appointment.changedRows != 0) {
-            const resReadAppointment =
-                await readAppointment(connection, { idAppointment: idAppointment });
+        const resReadAppointment =
+            await readAppointment(connection, { idAppointment: idAppointment });
 
-            return resReadAppointment;
-        }
+        return resReadAppointment;
 
-        return null;
 
     } catch (error) {
         console.log(`[markAppointmentAsProgress] -> `, error);
