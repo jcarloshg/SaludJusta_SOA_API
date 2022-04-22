@@ -15,6 +15,8 @@ apiExamRouter.get('/', (request, response) => response.status(200).json({ messag
 
 apiExamRouter.get('/request_exam_types', examenController.requestExamTypes);
 
+apiExamRouter.get('/requestExamsToday', examenController.requestExamsToday);
+
 
 // * PUT endpoints
 

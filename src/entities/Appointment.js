@@ -1,3 +1,4 @@
+const Exam = require("./Exam");
 
 class Appointment {
     constructor({
@@ -7,7 +8,9 @@ class Appointment {
         status = 'NO ASIGNADA',
         FK_Exam = null,
         FK_ExamCatalog = null,
-        FK_UserClient = null
+        FK_UserClient = null,
+        // relations
+        exam = new Exam({}),
     }) {
         this.idAppointment = idAppointment;
         this.date = date;
@@ -16,6 +19,8 @@ class Appointment {
         this.FK_Exam = FK_Exam;
         this.FK_ExamCatalog = FK_ExamCatalog;
         this.FK_UserClient = FK_UserClient;
+        // relations
+        this.exam = exam;
     }
 }
 

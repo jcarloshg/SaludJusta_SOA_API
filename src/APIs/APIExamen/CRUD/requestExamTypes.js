@@ -1,24 +1,16 @@
 const ExamCatalogItem = require("../../../entities/ExamCatalogItem");
+const conectionQuery = require("../../../Frameworks/database/mysql/conection.query");
 
 
 const requestExamTypes = async (connection) => {
 
-    const typesExams = new Promise((resolve, reject) => connection.query(
-        'SELECT * from ExamCatalog;',
-        (error, results, fields) => {
-            error
-                ? reject(error)
-                : resolve(results)
-        }
-    ));
-
     try {
 
-        const typesExamsResolve = await typesExams;
+        const query = 'SELECT * from ExamCatalog;'
 
-        const typeExams = typesExamsResolve.map(exam => new ExamCatalogItem(exam));
+        const typesExamsResolve = await conectionQuery(connection, query);
 
-        return await typeExams;
+        return typesExamsResolve.map(exam => new ExamCatalogItem(exam));
 
     } catch (error) {
         return error;
