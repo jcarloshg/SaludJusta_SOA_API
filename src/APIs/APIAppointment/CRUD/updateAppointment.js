@@ -12,7 +12,7 @@ const updateAppointment = async (connection, data) => {
     const { FK_UserClient, FK_Exam } = data;
     const _appointment = new Appointment(JSON.parse(data.appointment));
 
-    const query = `UPDATE Appointment SET FK_Exam = ${FK_Exam}, FK_UserClient = ${FK_UserClient} WHERE idAppointment = ${_appointment.idAppointment}`;
+    const query = `UPDATE Appointment SET FK_Exam = ${FK_Exam}, FK_UserClient = ${FK_UserClient}, status = "EN ESPERA" WHERE idAppointment = ${_appointment.idAppointment}`;
 
     const updateAppointmentQuery = new Promise((resolve, reject) => connection.query(
         query,
@@ -27,6 +27,7 @@ const updateAppointment = async (connection, data) => {
         return appointment
             ? new Appointment({
                 ..._appointment,
+                status: "EN ESPERA",
                 FK_UserClient: FK_UserClient,
                 FK_Exam: FK_Exam
             })

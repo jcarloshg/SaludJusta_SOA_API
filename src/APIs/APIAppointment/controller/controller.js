@@ -68,6 +68,19 @@ controller.requestAppointmentsDay = async (request, response) => {
         ? await CRUD.requestAppointmentsDay(connection, request.body)
         : null;
 
+    if (resRequestAppointmentsDay === "Invalid Date") {
+        responseMsg(
+            response,
+            {
+                code: 404,
+                data: resRequestAppointmentsDay,
+                isOk: false,
+                message: msgToResponse[404]
+            }
+        );
+        return;
+    }
+
     responseMsg(
         response,
         {
