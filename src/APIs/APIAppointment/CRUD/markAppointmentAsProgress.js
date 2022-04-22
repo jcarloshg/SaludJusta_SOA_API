@@ -5,6 +5,9 @@
 //      [idAppointment] is the id from an Appointment to update
 //============================================================
 
+const conectionQuery = require("../../../Frameworks/database/mysql/conection.query");
+const readAppointment = require("./readAppointment");
+
 const markAppointmentAsProgress = async (connection, data) => {
 
     const { idAppointment } = data;

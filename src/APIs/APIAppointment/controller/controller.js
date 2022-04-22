@@ -107,12 +107,12 @@ controller.markAppointmentAsProgress = async (request, response) => {
     responseMsg(
         response,
         {
-            code: resMarkAppointmentAsProgress === null ? 404 : 201,
+            code: resMarkAppointmentAsProgress === null ? 404 : 200,
             data: resMarkAppointmentAsProgress,
             isOk: resMarkAppointmentAsProgress === null ? false : true,
             message: resMarkAppointmentAsProgress === null
                 ? (_isValidData ? msgToResponse[404] : msgToResponse.dataInvalid)
-                : msgToResponse[201]
+                : msgToResponse[200]
         }
     );
 }
