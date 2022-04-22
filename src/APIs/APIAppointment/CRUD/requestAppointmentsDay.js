@@ -6,6 +6,7 @@
 //============================================================
 
 const Appointment = require("../../../entities/Appointment");
+const conectionQuery = require("../../../Frameworks/database/mysql/conection.query");
 
 const requestAppointmentsDay = async (connection, data) => {
 
@@ -14,20 +15,11 @@ const requestAppointmentsDay = async (connection, data) => {
     if (new Date(date) === "Invalid Date") return "Invalid Date";
     if (isNaN(new Date(date))) return "Invalid Date";
 
-    const query = `SELECT * FROM Appointment WHERE status = "EN ESPERA" AND date ='${date}'`;
-
-    const appointmentsDayQuery = new Promise((resolve, reject) => connection.query(
-        query,
-        (error, results, fields) => {
-            error
-                ? reject(error)
-                : resolve(results)
-        }
-    ));
-
     try {
 
-        const appointments = await appointmentsDayQuery;
+        const query = `SELECT * FROM Appointment WHERE status = "EN ESPERA" AND date ='${date}'`;;
+
+        const appointments = await conectionQuery(connection, query);
 
         return appointments
             ? appointments.map(appointment => new Appointment(appointment))

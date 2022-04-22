@@ -1,8 +1,8 @@
 
 //============================================================
-// his name -> solicitaCitasDelDia()
+// his name -> marcarCitaComoEncurso()
 // data ->
-//      [date] his format is YYYY-MM-DD -> 2022-04-21
+//      [idAppointment] is the id from an Appointment to update
 //============================================================
 
 const markAppointmentAsProgress = async (connection, data) => {

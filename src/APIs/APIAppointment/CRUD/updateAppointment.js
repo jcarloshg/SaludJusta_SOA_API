@@ -1,41 +1,39 @@
 
-// * NOTE this function get an [Appointment]
-// this function only update an Appointment with data :
-// -> FK_User (role CLIENT)
-// -> FK_Exam
 
-const Appointment = require("../../../entities/Appointment");
+//============================================================
+// his name -> marcarCitaComoEncurso()
+// data ->
+//      [idAppointment] -> is the id from an Appointment to update
+//      [FK_UserClient] -> is the id from user with role [Client]
+//      [FK_Exam]       -> is the id from exam
+//============================================================
+
+// * NOTE -> if [appointment.changedRows] is 0, then nothing update
+
+const conectionQuery = require("../../../Frameworks/database/mysql/conection.query");
+const readAppointment = require("./readAppointment");
 
 const updateAppointment = async (connection, data) => {
 
-    // get data
-    const { FK_UserClient, FK_Exam } = data;
-    const _appointment = new Appointment(JSON.parse(data.appointment));
-
-    const query = `UPDATE Appointment SET FK_Exam = ${FK_Exam}, FK_UserClient = ${FK_UserClient}, status = "EN ESPERA" WHERE idAppointment = ${_appointment.idAppointment}`;
-
-    const updateAppointmentQuery = new Promise((resolve, reject) => connection.query(
-        query,
-        (error, results, fields) => {
-            error ? reject(error) : resolve(results)
-        }
-    ));
+    const { FK_UserClient, FK_Exam, idAppointment } = data;
 
     try {
-        const appointment = await updateAppointmentQuery;
 
-        return appointment
-            ? new Appointment({
-                ..._appointment,
-                status: "EN ESPERA",
-                FK_UserClient: FK_UserClient,
-                FK_Exam: FK_Exam
-            })
-            : null;
+        const query = `UPDATE Appointment SET FK_Exam = ${FK_Exam}, FK_UserClient = ${FK_UserClient}, status = "EN ESPERA" WHERE idAppointment = ${idAppointment}`;
+        const appointment = await conectionQuery(connection, query);
+
+        if (appointment.changedRows != 0) {
+            const resReadAppointment =
+                await readAppointment(connection, { idAppointment: idAppointment });
+
+            return resReadAppointment;
+        }
+
+        return null;
 
     } catch (error) {
         console.log(error);
-        return error;
+        return null;
     }
 
 }

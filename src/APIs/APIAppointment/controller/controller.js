@@ -93,6 +93,7 @@ controller.requestAppointmentsDay = async (request, response) => {
 
 }
 
+
 controller.markAppointmentAsProgress = async (request, response) => {
 
     const resMarkAppointmentAsProgress = isValidData(request.body)
