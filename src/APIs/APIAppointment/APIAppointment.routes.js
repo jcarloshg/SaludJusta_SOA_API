@@ -19,6 +19,8 @@ apiAppointmentRoutes.get('/requestAppointmentsDay', controller.requestAppointmen
 
 apiAppointmentRoutes.put('/updateAppointment', controller.updateAppointment);
 
+apiAppointmentRoutes.put('/markAppointmentAsProgress', controller.markAppointmentAsProgress);
+
 // DELETE endpoints
 
 

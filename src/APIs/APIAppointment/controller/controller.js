@@ -93,5 +93,21 @@ controller.requestAppointmentsDay = async (request, response) => {
 
 }
 
+controller.markAppointmentAsProgress = async (request, response) => {
+
+    const resMarkAppointmentAsProgress = isValidData(request.body)
+        ? await CRUD.markAppointmentAsProgress(connection, response.data)
+        : null;
+
+    responseMsg(
+        response,
+        {
+            code: resMarkAppointmentAsProgress === null ? 404 : 201,
+            data: resMarkAppointmentAsProgress,
+            isOk: resMarkAppointmentAsProgress === null ? false : true,
+            message: resMarkAppointmentAsProgress === null ? msgToResponse[404] : msgToResponse[201]
+        }
+    );
+}
 
 module.exports = controller;
