@@ -66,4 +66,20 @@ examenController.requestExamsToday = async (request, response) => {
 
 }
 
+examenController.requestExamsClientName = async (request, response) => {
+
+    const resRequestExamsClientName =
+        await CRUD.requestExamsToday(connection, request.body);
+
+    responseMsg(
+        response,
+        {
+            code: resRequestExamsClientName ? 201 : 400,
+            data: resRequestExamsClientName,
+            isOk: resRequestExamsClientName ? true : false,
+            message: resRequestExamsClientName ? msgToResponse[201] : msgToResponse[400]
+        }
+    )
+}
+
 module.exports = examenController;
