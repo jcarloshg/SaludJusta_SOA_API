@@ -2,7 +2,7 @@
 //============================================================
 // his name -> marcarCitaComoEncurso()
 // data ->
-//      [idAppointment] is the id from an Appointment to update
+//      [idAppointment] is the id from an Appointment
 //============================================================
 
 const conectionQuery = require("../../../Frameworks/database/mysql/conection.query");

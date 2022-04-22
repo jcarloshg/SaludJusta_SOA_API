@@ -11,7 +11,7 @@ class User {
         password = null,
         role = null,
     }) {
-        this.User = User;
+        this.idUser = idUser;
         this.name = name;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;

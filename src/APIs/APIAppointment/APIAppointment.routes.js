@@ -14,6 +14,8 @@ apiAppointmentRoutes.get('/getAvailableHoursDay', controller.getAvailableHoursDa
 
 apiAppointmentRoutes.get('/requestAppointmentsDay', controller.requestAppointmentsDay);
 
+apiAppointmentRoutes.get('/searchAppointmentsByClientName', controller.searchAppointmentsByClientName);
+
 
 // PUT endpoints
 

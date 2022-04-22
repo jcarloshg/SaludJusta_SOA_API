@@ -96,8 +96,6 @@ controller.requestAppointmentsDay = async (request, response) => {
 
 controller.markAppointmentAsProgress = async (request, response) => {
 
-    console.log(`[request.body] -> `, request.body);
-
     const _isValidData = isValidData(request.body);
 
     const resMarkAppointmentAsProgress = _isValidData
@@ -116,5 +114,30 @@ controller.markAppointmentAsProgress = async (request, response) => {
         }
     );
 }
+
+
+controller.searchAppointmentsByClientName = async (request, response) => {
+
+    const _isValidData = isValidData(request.body);
+
+    const resSearchAppointmentsByClientName = _isValidData
+        ? await CRUD.searchAppointmentsByClientName(connection, request.body)
+        : null;
+
+    responseMsg(
+        response,
+        {
+            code: resSearchAppointmentsByClientName === null ? 404 : 200,
+            data: resSearchAppointmentsByClientName,
+            isOk: resSearchAppointmentsByClientName === null ? false : true,
+            message: resSearchAppointmentsByClientName === null
+                ? (_isValidData ? msgToResponse[404] : msgToResponse.dataInvalid)
+                : msgToResponse[200]
+        }
+    );
+
+}
+
+
 
 module.exports = controller;

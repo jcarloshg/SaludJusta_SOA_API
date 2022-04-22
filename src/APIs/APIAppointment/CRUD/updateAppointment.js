@@ -17,8 +17,6 @@ const updateAppointment = async (connection, data) => {
 
     const { FK_UserClient, FK_Exam, idAppointment } = data;
 
-    console.log(FK_UserClient, FK_Exam, idAppointment);
-
     try {
 
         const query = `UPDATE Appointment SET FK_Exam = ${FK_Exam}, FK_UserClient = ${FK_UserClient}, status = "EN ESPERA" WHERE idAppointment = ${idAppointment}`;
