@@ -3,7 +3,7 @@
 //============================================================
 // his name -> getAppointment()
 // data ->
-//      [idAppointment] is the id from an Appointment to update
+//      [idAppointment] is the id from an Appointment
 //============================================================
 
 const Appointment = require("../../../entities/Appointment");

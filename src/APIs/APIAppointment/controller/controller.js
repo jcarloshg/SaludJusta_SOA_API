@@ -96,8 +96,12 @@ controller.requestAppointmentsDay = async (request, response) => {
 
 controller.markAppointmentAsProgress = async (request, response) => {
 
-    const resMarkAppointmentAsProgress = isValidData(request.body)
-        ? await CRUD.markAppointmentAsProgress(connection, response.data)
+    console.log(`[request.body] -> `, request.body);
+
+    const _isValidData = isValidData(request.body);
+
+    const resMarkAppointmentAsProgress = _isValidData
+        ? await CRUD.markAppointmentAsProgress(connection, request.body)
         : null;
 
     responseMsg(
@@ -106,7 +110,9 @@ controller.markAppointmentAsProgress = async (request, response) => {
             code: resMarkAppointmentAsProgress === null ? 404 : 201,
             data: resMarkAppointmentAsProgress,
             isOk: resMarkAppointmentAsProgress === null ? false : true,
-            message: resMarkAppointmentAsProgress === null ? msgToResponse[404] : msgToResponse[201]
+            message: resMarkAppointmentAsProgress === null
+                ? (_isValidData ? msgToResponse[404] : msgToResponse.dataInvalid)
+                : msgToResponse[201]
         }
     );
 }
