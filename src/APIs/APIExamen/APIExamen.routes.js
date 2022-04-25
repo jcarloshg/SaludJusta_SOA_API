@@ -17,6 +17,8 @@ apiExamRouter.get('/request_exam_types', examenController.requestExamTypes);
 
 apiExamRouter.get('/requestExamsToday', examenController.requestExamsToday);
 
+apiExamRouter.get('/requestExamsClientName', examenController.requestExamsClientName);
+
 
 // * PUT endpoints
 

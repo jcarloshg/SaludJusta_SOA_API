@@ -68,8 +68,11 @@ examenController.requestExamsToday = async (request, response) => {
 
 examenController.requestExamsClientName = async (request, response) => {
 
-    const resRequestExamsClientName =
-        await CRUD.requestExamsToday(connection, request.body);
+    const _isValidData = isValidData(request.body);
+
+    const resRequestExamsClientName = _isValidData
+        ? await CRUD.requestExamsClientName(connection, request.body)
+        : null;
 
     responseMsg(
         response,
@@ -77,7 +80,9 @@ examenController.requestExamsClientName = async (request, response) => {
             code: resRequestExamsClientName ? 201 : 400,
             data: resRequestExamsClientName,
             isOk: resRequestExamsClientName ? true : false,
-            message: resRequestExamsClientName ? msgToResponse[201] : msgToResponse[400]
+            message: resRequestExamsClientName
+                ? (_isValidData ? msgToResponse[201] : msgToResponse.dataInvalid)
+                : msgToResponse[400]
         }
     )
 }
