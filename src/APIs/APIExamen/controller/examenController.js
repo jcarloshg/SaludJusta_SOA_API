@@ -87,4 +87,25 @@ examenController.requestExamsClientName = async (request, response) => {
     )
 }
 
+examenController.requestoInfoExamByID = async (request, response) => {
+
+    const _isValidData = isValidData(request.body);
+
+    const resRequestExamsClientName = _isValidData
+        ? await CRUD.requestoInfoExamByID(connection, request.body)
+        : null;
+
+    responseMsg(
+        response,
+        {
+            code: resRequestExamsClientName ? 201 : 400,
+            data: resRequestExamsClientName,
+            isOk: resRequestExamsClientName ? true : false,
+            message: resRequestExamsClientName
+                ? (_isValidData ? msgToResponse[201] : msgToResponse.dataInvalid)
+                : msgToResponse[400]
+        }
+    )
+}
+
 module.exports = examenController;

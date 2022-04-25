@@ -19,6 +19,8 @@ apiExamRouter.get('/requestExamsToday', examenController.requestExamsToday);
 
 apiExamRouter.get('/requestExamsClientName', examenController.requestExamsClientName);
 
+apiExamRouter.get('/requestoInfoExamByID', examenController.requestoInfoExamByID);
+
 
 // * PUT endpoints
 
