@@ -1,10 +1,6 @@
 
 class Exam {
 
-    // idExam int auto_increment primary key not null,
-    // results VARCHAR(45),
-    // FK_ExamCatalog int not null
-
     constructor({
         idExam = null,
         results = null,

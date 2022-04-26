@@ -37,11 +37,6 @@ const requestExamsClientName = async (connection, data) => {
         return null;
     }
 
-
-
-    return await "requestExamsClientName is Ok";
-    console.log(`[requestExamsClientName]`);
-
 }
 
 module.exports = requestExamsClientName;

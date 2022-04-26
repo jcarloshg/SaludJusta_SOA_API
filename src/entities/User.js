@@ -1,3 +1,4 @@
+const Appointment = require("./Appointment");
 
 class User {
 
@@ -10,6 +11,8 @@ class User {
         email = null,
         password = null,
         role = null,
+        // relations
+        appointments = [new Appointment({})],
     }) {
         this.idUser = idUser;
         this.name = name;
@@ -19,6 +22,7 @@ class User {
         this.email = email;
         this.password = password;
         this.role = role;
+        this.appointments = appointments;
     }
 
     getRol = () => this.rol;
