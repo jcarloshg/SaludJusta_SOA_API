@@ -16,6 +16,8 @@ const controller = {};
  */
 controller.existAccount = async (request, response) => {
 
+    console.log(`[request.body] -> `, request.body);
+
     const _isValidData = isValidData(request.body);
 
     const resExistAccount = _isValidData
