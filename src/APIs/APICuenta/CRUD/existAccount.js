@@ -1,5 +1,6 @@
 
 const User = require("../../../entities/User");
+const conectionQuery = require("../../../Frameworks/database/mysql/conection.query");
 
 /**
  *
@@ -9,21 +10,18 @@ const User = require("../../../entities/User");
  */
 const existAccount = async (connection, data) => {
 
-    const query = `SELECT * FROM User WHERE email = '${data.email}';`;
-
-    const userQuery = new Promise((resolve, reject) =>
-        connection.query(
-            query,
-            (error, results, fields) => error ? reject(error) : resolve(results)
-        )
-    );
-
     try {
-        const user = await userQuery;
-        return user[0] === undefined ? null : new User(user[0]);
+
+        const { email } = data;
+        const query = `SELECT * FROM User WHERE email = '${email}';`;
+
+        const resExistAccount = await conectionQuery(connection, query);
+
+        return new User(resExistAccount[0]);
+
     } catch (error) {
         console.log(error);
-        return error;
+        return null;
     }
 }
 

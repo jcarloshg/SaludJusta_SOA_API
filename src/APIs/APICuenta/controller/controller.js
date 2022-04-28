@@ -1,6 +1,7 @@
 
 const { response, request } = require("express");
 const connection = require("../../../Frameworks/database/mysql/connection");
+const isValidData = require("../../../utils/isValidData/isValidData");
 const msgToResponse = require("../../../utils/messagesResponse/msgToResponse");
 const responseMsg = require("../../../utils/messagesResponse/response");
 const CRUD = require("../CRUD/CRUD");
@@ -15,9 +16,11 @@ const controller = {};
  */
 controller.existAccount = async (request, response) => {
 
-    const data = request.body;
+    const _isValidData = isValidData(request.body);
 
-    const resExistAccount = await CRUD.existAccount(connection, data);
+    const resExistAccount = _isValidData
+        ? await CRUD.existAccount(connection, request.body)
+        : null;
 
     responseMsg(
         response,
