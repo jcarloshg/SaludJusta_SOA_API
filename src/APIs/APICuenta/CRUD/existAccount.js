@@ -17,7 +17,9 @@ const existAccount = async (connection, data) => {
 
         const resExistAccount = await conectionQuery(connection, query);
 
-        return new User(resExistAccount[0]);
+        return resExistAccount.length === 0
+            ? null
+            : new User(resExistAccount[0]);
 
     } catch (error) {
         console.log(error);
