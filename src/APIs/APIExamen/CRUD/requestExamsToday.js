@@ -13,6 +13,8 @@ const conectionQuery = require("../../../Frameworks/database/mysql/conection.que
 
 const requestExamsToday = async (connection) => {
 
+    console.log(`[requestExamsToday] -> `,);
+
     const today = new Date('2022-04-21'); // TODO change to today
     const todayString = today.toISOString().split('T')[0];
 

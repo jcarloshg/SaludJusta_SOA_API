@@ -41,7 +41,12 @@ controller.existAccount = async (request, response) => {
  */
 controller.createAccount = async (request, response) => {
 
-    const resExistAccount = await CRUD.createAccount(connection, request.body);
+    const _isValidData = isValidData(request.body);
+
+    const resExistAccount = null;
+    _isValidData
+        ? await CRUD.createAccount(connection, request.body)
+        : null;
 
     responseMsg(
         response,
@@ -64,7 +69,11 @@ controller.createAccount = async (request, response) => {
  */
 controller.loggin = async (request, response) => {
 
-    const resExistAccount = await CRUD.loggin(connection, request.body);
+    const _isValidData = isValidData(request.query);
+
+    const resExistAccount = _isValidData
+        ? await CRUD.loggin(connection, request.query)
+        : null;
 
     responseMsg(
         response,
