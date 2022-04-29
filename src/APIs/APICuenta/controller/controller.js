@@ -16,12 +16,10 @@ const controller = {};
  */
 controller.existAccount = async (request, response) => {
 
-    console.log(`[request.body] -> `, request.body);
-
-    const _isValidData = isValidData(request.body);
+    const _isValidData = isValidData(request.query);
 
     const resExistAccount = _isValidData
-        ? await CRUD.existAccount(connection, request.body)
+        ? await CRUD.existAccount(connection, request.query)
         : null;
 
     responseMsg(

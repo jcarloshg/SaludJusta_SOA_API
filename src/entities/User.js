@@ -12,7 +12,7 @@ class User {
         password = null,
         role = null,
         // relations
-        appointments = [new Appointment({})],
+        appointments = [],
     }) {
         this.idUser = idUser;
         this.name = name;
@@ -22,7 +22,9 @@ class User {
         this.email = email;
         this.password = password;
         this.role = role;
-        this.appointments = appointments;
+        this.appointments = (appointments.length > 0)
+            ? appointments.map(appointment => new Appointment(appointment))
+            : appointments;
     }
 
     getRol = () => this.rol;
@@ -45,13 +47,13 @@ class User {
      * @returns
      */
     isPropertiesVoid() {
-        if (this.name == "") return true;
-        if (this.lastName == "") return true;
-        if (this.phoneNumber == "") return true;
-        if (this.gender == "") return true;
-        if (this.email == "") return true;
-        if (this.password == "") return true;
-        if (this.role == "") return true;
+        if (this.name === "") return true;
+        if (this.lastName === "") return true;
+        if (this.phoneNumber === "") return true;
+        if (this.gender === "") return true;
+        if (this.email === "") return true;
+        if (this.password === "") return true;
+        if (this.role === "") return true;
 
         return false;
     }
