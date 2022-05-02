@@ -23,6 +23,8 @@ apiAppointmentRoutes.put('/updateAppointment', controller.updateAppointment);
 
 apiAppointmentRoutes.put('/markAppointmentAsProgress', controller.markAppointmentAsProgress);
 
+apiAppointmentRoutes.put('/markAppointmentAsComplete', controller.markAppointmentAsComplete);
+
 // DELETE endpoints
 
 

@@ -124,7 +124,7 @@ examenController.recordResults = async (request, response) => {
             isOk: resRequestExamsClientName ? true : false,
             message: resRequestExamsClientName
                 ? (_isValidData ? msgToResponse[201] : msgToResponse.dataInvalid)
-                : msgToResponse[400]
+                : (_isValidData ? msgToResponse[400] : msgToResponse.dataInvalid)
         }
     )
 
