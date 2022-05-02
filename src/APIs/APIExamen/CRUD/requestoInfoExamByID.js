@@ -43,11 +43,9 @@ const requestoInfoExamByID = async (connection, data) => {
         return client;
 
     } catch (error) {
-        console.log(`[requestExamsToday] -> `, error);
+        console.log(`[requestoInfoExamByID] -> `, error);
         return null;
     }
-
-    return await "requestoInfoExamByID is Ok";
 
 }
 

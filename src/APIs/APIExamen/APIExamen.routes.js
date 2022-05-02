@@ -24,6 +24,8 @@ apiExamRouter.get('/requestoInfoExamByID', examenController.requestoInfoExamByID
 
 // * PUT endpoints
 
+apiExamRouter.put('/recordResults', examenController.recordResults);
+
 
 // * DELETE endpoints
 

@@ -32,7 +32,6 @@ const requestExamsToday = async (connection) => {
 
         return infoExams.map(infoExam => {
 
-
             const examCatalogItem = new ExamCatalogItem(infoExam);
             const auxExam = new Exam({ ...infoExam, examCatalogItem: examCatalogItem });
             const appointment = new Appointment({ ...infoExam, exam: auxExam });
