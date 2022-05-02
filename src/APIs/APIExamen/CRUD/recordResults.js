@@ -7,7 +7,7 @@ const recordResults = async (connection, data) => {
     const { idExam, results } = data;
 
     try {
-        const query = `UPDATE Exam SET results=${results} WHERE idExam = ${idExam};`
+        const query = `UPDATE Exam SET results='${results}' WHERE idExam = ${idExam};`
 
         const resRecordResults = await conectionQuery(connection, query);
 
