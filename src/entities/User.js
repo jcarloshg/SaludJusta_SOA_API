@@ -6,6 +6,7 @@ class User {
         idUser = null,
         name = null,
         lastName = null,
+        age = null,
         phoneNumber = null,
         gender = null,
         email = null,
@@ -17,6 +18,7 @@ class User {
         this.idUser = idUser;
         this.name = name;
         this.lastName = lastName;
+        this.age = age;
         this.phoneNumber = phoneNumber;
         this.gender = gender;
         this.email = email;

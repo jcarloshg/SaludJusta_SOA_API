@@ -1,4 +1,6 @@
 const Appointment = require("../../../entities/Appointment");
+const Exam = require("../../../entities/Exam");
+const ExamCatalogItem = require("../../../entities/ExamCatalogItem");
 
 
 const getAvailableHoursDay = async (connection, data) => {
@@ -12,6 +14,8 @@ const getAvailableHoursDay = async (connection, data) => {
         `typeExam = '${typeExam}' ` +
         `AND date = '${date}' ` +
         `AND status = 'NO ASIGNADA';`;
+
+    console.log(query);
 
     const hoursQuery = new Promise((resolve, reject) => connection.query(
         query,
@@ -27,7 +31,12 @@ const getAvailableHoursDay = async (connection, data) => {
         // console.log(`[appointments[0]] -> `, appointments[0]);
         return appointments[0] === undefined
             ? null
-            : appointments.map(appointment => new Appointment(appointment))
+            : appointments.map(appointment => {
+                console.log(appointment);
+                const examCatalogItem = new ExamCatalogItem({ ...appointment });
+                const exam = new Exam({ ...appointment, examCatalogItem: examCatalogItem });
+                return new Appointment({ ...appointment })
+            })
     } catch (error) {
         console.log(error);
         return error;

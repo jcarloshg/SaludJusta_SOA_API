@@ -18,8 +18,8 @@ const createAccount = async (connection, data) => {
         const userData = new User(data);
 
         const query =
-            "INSERT INTO User( name, lastName, phoneNumber, gender, email, password, role) values " +
-            `('${userData.name}','${userData.lastName}','${userData.phoneNumber}','${userData.gender}','${userData.email}','${userData.password}','${userData.role}');`;;
+            "INSERT INTO User( name, lastName, age, phoneNumber, gender, email, password, role) values " +
+            `('${userData.name}','${userData.lastName}', ${userData.age}, '${userData.phoneNumber}','${userData.gender}','${userData.email}','${userData.password}','${userData.role}');`;;
 
         const user = await conectionQuery(connection, query);
         const idNewClient = user.insertId;

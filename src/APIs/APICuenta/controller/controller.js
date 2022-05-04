@@ -43,8 +43,7 @@ controller.createAccount = async (request, response) => {
 
     const _isValidData = isValidData(request.body);
 
-    const resExistAccount = null;
-    _isValidData
+    const resExistAccount = _isValidData
         ? await CRUD.createAccount(connection, request.body)
         : null;
 
