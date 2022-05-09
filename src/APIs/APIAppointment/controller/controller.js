@@ -16,8 +16,8 @@ const controller = {};
  */
 controller.getAvailableHoursDay = async (request, response) => {
 
-    const resGetAvailableHoursDay = isValidData(request.body)
-        ? await CRUD.getAvailableHoursDay(connection, request.body)
+    const resGetAvailableHoursDay = isValidData(request.query)
+        ? await CRUD.getAvailableHoursDay(connection, request.query)
         : null;
 
     responseMsg(
