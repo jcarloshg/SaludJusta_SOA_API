@@ -16,6 +16,8 @@ const controller = {};
  */
 controller.getAvailableHoursDay = async (request, response) => {
 
+    console.log(request.query);
+
     const resGetAvailableHoursDay = isValidData(request.query)
         ? await CRUD.getAvailableHoursDay(connection, request.query)
         : null;
@@ -116,12 +118,17 @@ controller.markAppointmentAsProgress = async (request, response) => {
 }
 
 
+/**
+ *
+ * @param {request} request
+ * @param {response} response
+ */
 controller.searchAppointmentsByClientName = async (request, response) => {
 
-    const _isValidData = isValidData(request.body);
+    const _isValidData = isValidData(request.query);
 
     const resSearchAppointmentsByClientName = _isValidData
-        ? await CRUD.searchAppointmentsByClientName(connection, request.body)
+        ? await CRUD.searchAppointmentsByClientName(connection, request.query)
         : null;
 
     responseMsg(

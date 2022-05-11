@@ -6,6 +6,8 @@
 //============================================================
 
 const Appointment = require("../../../entities/Appointment");
+const Exam = require("../../../entities/Exam");
+const ExamCatalogItem = require("../../../entities/ExamCatalogItem");
 const conectionQuery = require("../../../Frameworks/database/mysql/conection.query");
 
 const searchAppointmentsByClientName = async (connection, data) => {
@@ -15,13 +17,26 @@ const searchAppointmentsByClientName = async (connection, data) => {
     try {
 
         const query =
-            "SELECT * FROM Appointment INNER JOIN User ON User.idUser = Appointment.FK_UserClient WHERE " +
-            `name = '${name}' ` +
-            "ORDER BY date,time ASC;";
+            "SELECT * FROM Appointment " +
+            "INNER JOIN Exam ON Appointment.FK_Exam = Exam.idExam " +
+            "INNER JOIN ExamCatalog ON Exam.FK_ExamCatalog = ExamCatalog.idExamCatalog " +
+            "INNER JOIN User ON User.idUser = Appointment.FK_UserClient " +
+            `WHERE name = "${name}" ` +
+            "ORDER BY time ASC;";
 
         const resSearchAppointmentsByClientName = await conectionQuery(connection, query);
 
-        return resSearchAppointmentsByClientName.map(appointment => new Appointment(appointment));
+        console.log(resSearchAppointmentsByClientName);
+
+        return resSearchAppointmentsByClientName.map(appoint => {
+
+            const examCatalogItem = new ExamCatalogItem({ ...appoint });
+            const exam = new Exam({ ...appoint, examCatalogItem: examCatalogItem });
+            const appointment = new Appointment({ ...appoint, exam: exam });
+
+            return appointment;
+
+        });
 
     } catch (error) {
         console.log(`[searchAppointmentsByClientName] -> `, error);
