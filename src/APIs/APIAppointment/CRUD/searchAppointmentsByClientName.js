@@ -22,7 +22,7 @@ const searchAppointmentsByClientName = async (connection, data) => {
             "INNER JOIN ExamCatalog ON Exam.FK_ExamCatalog = ExamCatalog.idExamCatalog " +
             "INNER JOIN User ON User.idUser = Appointment.FK_UserClient " +
             `WHERE name = "${name}" ` +
-            "ORDER BY time ASC;";
+            "ORDER BY date ASC;";
 
         const resSearchAppointmentsByClientName = await conectionQuery(connection, query);
 
