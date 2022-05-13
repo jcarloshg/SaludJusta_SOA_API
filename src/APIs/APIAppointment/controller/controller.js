@@ -168,4 +168,22 @@ controller.markAppointmentAsComplete = async (request, response) => {
 }
 
 
+controller.createAppointment = async (request, response) => {
+
+    const res = await CRUD.createAppointment(connection, request.body);
+
+    responseMsg(
+        response,
+        {
+            code: res === null ? 404 : 200,
+            data: res,
+            isOk: res === null ? false : true,
+            message: res === null
+                ? (_isValidData ? msgToResponse[404] : msgToResponse.dataInvalid)
+                : msgToResponse[200]
+        }
+    );
+}
+
+
 module.exports = controller;

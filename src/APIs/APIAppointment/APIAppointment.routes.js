@@ -4,6 +4,7 @@ const controller = require("./controller/controller");
 const apiAppointmentRoutes = Router();
 
 // POST endpoints
+apiAppointmentRoutes.post('/createAppointment', controller.createAppointment);
 
 
 // GET endpoints

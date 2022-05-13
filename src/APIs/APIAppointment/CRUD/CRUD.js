@@ -5,6 +5,7 @@ const requestAppointmentsDay = require('./requestAppointmentsDay');
 const markAppointmentAsProgress = require('./markAppointmentAsProgress');
 const searchAppointmentsByClientName = require('./searchAppointmentsByClientName');
 const markAppointmentAsComplete = require('./markAppointmentAsComplete');
+const createAppointment = require('./createAppointment');
 
 const CRUD = {
     getAvailableHoursDay,
@@ -12,7 +13,8 @@ const CRUD = {
     requestAppointmentsDay,
     markAppointmentAsProgress,
     searchAppointmentsByClientName,
-    markAppointmentAsComplete
+    markAppointmentAsComplete,
+    createAppointment
 };
 
 module.exports = CRUD;
